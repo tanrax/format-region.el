@@ -21,7 +21,7 @@ IS-ALL-WORDS-CAPITALIZED is a boolean that indicates if all words should be capi
 	 (words (split-string words-lower-case " ")) ; Split sentence into words by spaces
 	 (words-case (if is-all-words-capitalized (mapcar #'capitalize words) words)) ; Capitalize first letter of each word
 	 (sentence-with-new-separator (mapconcat 'identity words-case separator)) ; Join words with separator
-	 (sentence-with-first-word-capitalized (if is-first-word-capitalized (concat (capitalize (substring sentence-with-new-separator 0 1)) (substring sentence-with-new-separator 1)) sentence-with-new-separator)) ; Capitalize first letter of first word
+	 (sentence-with-first-word-capitalized (if is-first-word-capitalized sentence-with-new-separator (concat (downcase (substring sentence-with-new-separator 0 1)) (substring sentence-with-new-separator 1)))) ; Capitalize first letter of first word
 	 )
     sentence-with-first-word-capitalized))
 
@@ -58,5 +58,12 @@ IS-ALL-WORDS-CAPITALIZED is a boolean that indicates if all words should be capi
   (let ((text (buffer-substring-no-properties (region-beginning) (region-end))))
     (delete-region (region-beginning) (region-end))
     (insert (funcall to-pascal-case text))))
+
+(defun format-to-snake-case-region ()
+  "Convert the selected text to snake_case."
+  (interactive)
+  (let ((text (buffer-substring-no-properties (region-beginning) (region-end))))
+    (delete-region (region-beginning) (region-end))
+    (insert (funcall to-snake-case text))))
 
 ;;; transform-texts-to-formats.el ends here
