@@ -1,4 +1,4 @@
-;;; transform-texts-to-formats.el --- Convert plain text into different formats: camelCase, kebap-case or lisp-case, PascalCase or snake_case.
+;;; format-region.el --- Transform region in different formats: camelCase, kebap-case or lisp-case, PascalCase or snake_case.
 ;;
 ;; Copyright © 2023 Andros Fenollosa
 ;; Authors: Andros Fenollosa <andros@fenollosa.email>
@@ -7,7 +7,7 @@
 ;; SPDX-License-Identifier: GNU General Public License v3.0 or later
 
 ;;; Commentary:
-;; Convert plain text into different formats: camelCase, kebap-case or lisp-case, PascalCase or snake_case.
+;; Transform region in different formats: camelCase, kebap-case or lisp-case, PascalCase or snake_case.
 
 ;;; Code:
 
@@ -38,21 +38,21 @@ IS-ALL-WORDS-CAPITALIZED is a boolean that indicates if all words should be capi
 
 ;; Interactive functions
 
-(defun format-to-camel-case ()
+(defun format-to-camel-case-region ()
   "Convert the selected text to camelCase."
   (interactive)
   (let ((text (buffer-substring-no-properties (region-beginning) (region-end))))
     (delete-region (region-beginning) (region-end))
     (insert (funcall to-camel-case text))))
 
-(defun format-to-kebab-case ()
+(defun format-to-kebab-case-region ()
   "Convert the selected text to kebab-case."
   (interactive)
   (let ((text (buffer-substring-no-properties (region-beginning) (region-end))))
     (delete-region (region-beginning) (region-end))
     (insert (funcall to-kebab-case text))))
 
-(defun format-to-pascal-case ()
+(defun format-to-pascal-case-region ()
   "Convert the selected text to PascalCase."
   (interactive)
   (let ((text (buffer-substring-no-properties (region-beginning) (region-end))))
