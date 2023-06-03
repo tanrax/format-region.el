@@ -1,6 +1,6 @@
 # format-region.el
 
-Transform region in different formats: camelCase, kebap-case or lisp-case, PascalCase or snake_case.
+Transform region in different formats: camelCase, kebab-case or lisp-case, PascalCase or snake_case.
 
 ![format-region](demo.gif)
 
@@ -14,10 +14,10 @@ Select region and call:
 M-x format-to-camel-case-region
 ```
 
-### kebap-case o lisp-case
+### kebab-case o lisp-case
 
 ```
-M-x format-to-kebap-case-region
+M-x format-to-kebab-case-region
 ```
 
 or

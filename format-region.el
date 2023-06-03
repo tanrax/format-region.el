@@ -1,4 +1,4 @@
-;;; format-region.el --- Transform region in different formats: camelCase, kebap-case or lisp-case, PascalCase or snake_case. -*- lexical-binding: t;
+;;; format-region.el --- Transform region in different formats: camelCase, kebab-case or lisp-case, PascalCase or snake_case. -*- lexical-binding: t;
 ;;
 ;; Copyright © 2023 Andros Fenollosa
 ;; Authors: Andros Fenollosa <andros@fenollosa.email>
@@ -7,7 +7,7 @@
 ;; SPDX-License-Identifier: GNU General Public License v3.0 or later
 
 ;;; Commentary:
-;; Transform region in different formats: camelCase, kebap-case or lisp-case, PascalCase or snake_case.
+;; Transform region in different formats: camelCase, kebab-case or lisp-case, PascalCase or snake_case.
 
 ;;; Code:
 
