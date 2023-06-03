@@ -1,4 +1,4 @@
-;;; format-region.el --- Transform region in different formats: camelCase, kebap-case or lisp-case, PascalCase or snake_case.
+;;; format-region.el --- Transform region in different formats: camelCase, kebap-case or lisp-case, PascalCase or snake_case. -*- lexical-binding: t;
 ;;
 ;; Copyright © 2023 Andros Fenollosa
 ;; Authors: Andros Fenollosa <andros@fenollosa.email>
@@ -70,4 +70,4 @@ IS-ALL-WORDS-CAPITALIZED is a boolean that indicates if all words should be capi
   (interactive)
   (format-region to-snake-case))
 
-;;; transform-texts-to-formats.el ends here
+;;; format-region.el ends here
