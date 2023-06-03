@@ -32,38 +32,42 @@ IS-ALL-WORDS-CAPITALIZED is a boolean that indicates if all words should be capi
 
 ;; Define functions
 (setq to-camel-case (curried-format nil nil t)) ; camelCase
-(setq to-kebab-case (curried-format "-" nil nil)) ; kebab-case
+(setq to-kebab-case (curried-format "-" nil nil)) ; kebab-case or lisp-case
 (setq to-pascal-case (curried-format nil t t)) ; PascalCase
 (setq to-snake-case (curried-format "_" nil nil)) ; snake_case
+
+(defun format-region (fn-format)
+  "Format the selected region with FN-FORMAT."
+  (interactive)
+  (let ((text (buffer-substring-no-properties (region-beginning) (region-end))))
+    (delete-region (region-beginning) (region-end))
+    (insert (funcall fn-format text))))
 
 ;; Interactive functions
 
 (defun format-to-camel-case-region ()
   "Convert the selected text to camelCase."
   (interactive)
-  (let ((text (buffer-substring-no-properties (region-beginning) (region-end))))
-    (delete-region (region-beginning) (region-end))
-    (insert (funcall to-camel-case text))))
+  (format-region to-camel-case))
 
 (defun format-to-kebab-case-region ()
-  "Convert the selected text to kebab-case."
+  "Convert the selected text to kebab-case or lisp-case."
   (interactive)
-  (let ((text (buffer-substring-no-properties (region-beginning) (region-end))))
-    (delete-region (region-beginning) (region-end))
-    (insert (funcall to-kebab-case text))))
+  (format-region to-kebab-case))
+
+(defun format-to-lisp-case-region ()
+  "Convert the selected text to kebab-case or lisp-case."
+  (interactive)
+  (format-region to-kebab-case))
 
 (defun format-to-pascal-case-region ()
   "Convert the selected text to PascalCase."
   (interactive)
-  (let ((text (buffer-substring-no-properties (region-beginning) (region-end))))
-    (delete-region (region-beginning) (region-end))
-    (insert (funcall to-pascal-case text))))
+  (format-region to-pascal-case))
 
 (defun format-to-snake-case-region ()
   "Convert the selected text to snake_case."
   (interactive)
-  (let ((text (buffer-substring-no-properties (region-beginning) (region-end))))
-    (delete-region (region-beginning) (region-end))
-    (insert (funcall to-snake-case text))))
+  (format-region to-snake-case))
 
 ;;; transform-texts-to-formats.el ends here
