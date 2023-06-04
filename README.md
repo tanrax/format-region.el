@@ -1,6 +1,6 @@
 # format-region.el
 
-Transform region in different formats: camelCase, kebab-case or lisp-case, PascalCase or snake_case.
+Transform region in different formats in Emacs: camelCase, kebab-case or lisp-case, PascalCase or snake_case.
 
 ![format-region](demo.gif)
 
