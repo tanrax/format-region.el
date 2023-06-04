@@ -4,7 +4,7 @@
 ;; Authors: Andros Fenollosa <andros@fenollosa.email>
 ;; URL: https://github.com/tanrax/format-region.el
 ;; Version: 1.0.0
-;; SPDX-License-Identifier: GNU General Public License v3.0 or later
+;; SPDX-License-Identifier: GPL-3.0-or-later
 
 ;;; Commentary:
 ;; Transform region in different formats: camelCase, kebab-case or lisp-case, PascalCase and snake_case.
