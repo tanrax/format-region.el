@@ -35,10 +35,10 @@ if all words should be capitalized."
   `(lambda (sentence) (format-region-to-format sentence ,separator ,is-first-word-capitalized ,is-all-words-capitalized)))
 
 ;; Define functions
-(setq format-region-to-format-camel-case (format-region-curried nil nil t)) ; camelCase
-(setq format-region-to-format-kebab-case (format-region-curried "-" nil nil)) ; kebab-case or lisp-case
-(setq format-region-to-format-pascal-case (format-region-curried nil t t)) ; PascalCase
-(setq format-region-to-format-snake-case (format-region-curried "_" nil nil)) ; snake_case
+(defvar format-region-to-format-camel-case (format-region-curried nil nil t)) ; camelCase
+(defvar format-region-to-format-kebab-case (format-region-curried "-" nil nil)) ; kebab-case or lisp-case
+(defvar format-region-to-format-pascal-case (format-region-curried nil t t)) ; PascalCase
+(defvar format-region-to-format-snake-case (format-region-curried "_" nil nil)) ; snake_case
 
 (defun format-region-selected (fn-format)
   "Format the selected region with FN-FORMAT."
