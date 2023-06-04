@@ -11,11 +11,16 @@
 
 ;;; Code:
 
-(defun format-region-to-format (sentence separator is-first-word-capitalized is-all-words-capitalized)
+(defun format-region-to-format (sentence
+				separator
+				is-first-word-capitalized
+				is-all-words-capitalized)
   "Convert SENTENCE to format.
 SEPARATOR is the character that will separate the words.
-IS-FIRST-WORD-CAPITALIZED is a boolean that indicates if the first word should be capitalized.
-IS-ALL-WORDS-CAPITALIZED is a boolean that indicates if all words should be capitalized."
+IS-FIRST-WORD-CAPITALIZED is a boolean that indicates
+if the first word should be capitalized.
+IS-ALL-WORDS-CAPITALIZED is a boolean that indicates
+if all words should be capitalized."
   (let* ((words-lower-case (downcase sentence)) ; To lowercase
 	 (words (split-string words-lower-case " ")) ; Split sentence into words by spaces
 	 (words-case (if is-all-words-capitalized (mapcar #'capitalize words) words)) ; Capitalize first letter of each word
@@ -50,12 +55,12 @@ IS-ALL-WORDS-CAPITALIZED is a boolean that indicates if all words should be capi
   (format-region-selected format-region-to-format-camel-case))
 
 (defun format-region-to-kebab-case ()
-  "Convert the selected text to kebab-case or lisp-case."
+  "Convert the selected text to `kebab-case' or lisp-case."
   (interactive)
   (format-region-selected format-region-to-format-kebab-case))
 
 (defun format-region-to-lisp-case ()
-  "Convert the selected text to kebab-case or lisp-case."
+  "Convert the selected text to `kebab-case' or lisp-case."
   (interactive)
   (format-region-selected format-region-to-format-kebab-case))
 
