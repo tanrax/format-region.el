@@ -21,11 +21,17 @@ IS-FIRST-WORD-CAPITALIZED is a boolean that indicates
 if the first word should be capitalized.
 IS-ALL-WORDS-CAPITALIZED is a boolean that indicates
 if all words should be capitalized."
-  (let* ((words-lower-case (downcase sentence)) ; To lowercase
-         (words (split-string words-lower-case " ")) ; Split sentence into words by spaces
-         (words-case (if is-all-words-capitalized (mapcar #'capitalize words) words)) ; Capitalize first letter of each word
-         (sentence-with-new-separator (mapconcat #'identity words-case separator)) ; Join words with separator
-         (sentence-with-first-word-capitalized (if is-first-word-capitalized sentence-with-new-separator (concat (downcase (substring sentence-with-new-separator 0 1)) (substring sentence-with-new-separator 1)))) ; Capitalize first letter of first word
+  (let* ((words-lower-case (downcase sentence)) ; To lowercase.
+         (words (split-string words-lower-case " ")) ; Split sentence into words
+					; by spaces.
+         (words-case (if is-all-words-capitalized (mapcar #'capitalize words)
+                                words)) ; Capitalize first letter of each word.
+         (sentence-with-new-separator (mapconcat #'identity words-case
+                                separator)) ; Join words with separator.
+         (sentence-with-first-word-capitalized (if is-first-word-capitalized
+                                sentence-with-new-separator (concat (downcase
+                                (substring sentence-with-new-separator 0 1))
+                                (substring sentence-with-new-separator 1)))) ; Capitalize first letter of first word.
          )
     sentence-with-first-word-capitalized))
 
@@ -33,7 +39,8 @@ if all words should be capitalized."
 (defmacro format-region-curried (separator
                                  is-first-word-capitalized
                                  is-all-words-capitalized)
-  "Curry the function to-format with SEPARATOR, IS-FIRST-WORD-CAPITALIZED and IS-ALL-WORDS-CAPITALIZED."
+  "Curry the function to-format:
+SEPARATOR, IS-FIRST-WORD-CAPITALIZED and IS-ALL-WORDS-CAPITALIZED."
   `(lambda (sentence) (format-region-to-format sentence ,separator ,is-first-word-capitalized ,is-all-words-capitalized)))
 
 ;; Define functions
