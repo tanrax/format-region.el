@@ -12,9 +12,9 @@
 ;;; Code:
 
 (defun format-region-to-format (sentence
-				separator
-				is-first-word-capitalized
-				is-all-words-capitalized)
+                                separator
+                                is-first-word-capitalized
+                                is-all-words-capitalized)
   "Convert SENTENCE to format.
 SEPARATOR is the character that will separate the words.
 IS-FIRST-WORD-CAPITALIZED is a boolean that indicates
@@ -22,15 +22,17 @@ if the first word should be capitalized.
 IS-ALL-WORDS-CAPITALIZED is a boolean that indicates
 if all words should be capitalized."
   (let* ((words-lower-case (downcase sentence)) ; To lowercase
-	 (words (split-string words-lower-case " ")) ; Split sentence into words by spaces
-	 (words-case (if is-all-words-capitalized (mapcar #'capitalize words) words)) ; Capitalize first letter of each word
-	 (sentence-with-new-separator (mapconcat 'identity words-case separator)) ; Join words with separator
-	 (sentence-with-first-word-capitalized (if is-first-word-capitalized sentence-with-new-separator (concat (downcase (substring sentence-with-new-separator 0 1)) (substring sentence-with-new-separator 1)))) ; Capitalize first letter of first word
-	 )
+         (words (split-string words-lower-case " ")) ; Split sentence into words by spaces
+         (words-case (if is-all-words-capitalized (mapcar #'capitalize words) words)) ; Capitalize first letter of each word
+         (sentence-with-new-separator (mapconcat 'identity words-case separator)) ; Join words with separator
+         (sentence-with-first-word-capitalized (if is-first-word-capitalized sentence-with-new-separator (concat (downcase (substring sentence-with-new-separator 0 1)) (substring sentence-with-new-separator 1)))) ; Capitalize first letter of first word
+         )
     sentence-with-first-word-capitalized))
 
 
-(defmacro format-region-curried (separator is-first-word-capitalized is-all-words-capitalized)
+(defmacro format-region-curried (separator
+                                 is-first-word-capitalized
+                                 is-all-words-capitalized)
   "Curry the function to-format with SEPARATOR, IS-FIRST-WORD-CAPITALIZED and IS-ALL-WORDS-CAPITALIZED."
   `(lambda (sentence) (format-region-to-format sentence ,separator ,is-first-word-capitalized ,is-all-words-capitalized)))
 
@@ -78,12 +80,12 @@ if all words should be capitalized."
 (defun format-region-debug ()
   "Check if all functions work correctly. Print OK if so."
   (let (
-	(is-camel-case-ok (string= (funcall format-region-to-format-camel-case "hello world") "helloWorld"))
-	(is-kebab-case-ok (string= (funcall format-region-to-format-kebab-case "hello world") "hello-world"))
-	(is-pascal-case-ok (string= (funcall format-region-to-format-pascal-case "hello world") "HelloWorld"))
-	(is-snake-case-ok (string= (funcall format-region-to-format-snake-case "hello world") "hello_world")))
+        (is-camel-case-ok (string= (funcall format-region-to-format-camel-case "hello world") "helloWorld"))
+        (is-kebab-case-ok (string= (funcall format-region-to-format-kebab-case "hello world") "hello-world"))
+        (is-pascal-case-ok (string= (funcall format-region-to-format-pascal-case "hello world") "HelloWorld"))
+        (is-snake-case-ok (string= (funcall format-region-to-format-snake-case "hello world") "hello_world")))
     (if (and is-camel-case-ok is-kebab-case-ok is-pascal-case-ok is-snake-case-ok)
-	(message "OK")
+        (message "OK")
       (message "ERROR"))))
 
 (provide 'format-region)
