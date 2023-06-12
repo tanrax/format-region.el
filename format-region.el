@@ -7,7 +7,7 @@
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
 ;;; Commentary:
-;; Transform region in different formats: camelCase, kebab-case or lisp-case, PascalCase and snake_case.
+;; Transform region words to: camelCase, lisp-case, PascalCase and snake_case.
 
 ;;; Code:
 
@@ -24,7 +24,7 @@ if all words should be capitalized."
   (let* ((words-lower-case (downcase sentence)) ; To lowercase
          (words (split-string words-lower-case " ")) ; Split sentence into words by spaces
          (words-case (if is-all-words-capitalized (mapcar #'capitalize words) words)) ; Capitalize first letter of each word
-         (sentence-with-new-separator (mapconcat 'identity words-case separator)) ; Join words with separator
+         (sentence-with-new-separator (mapconcat #'identity words-case separator)) ; Join words with separator
          (sentence-with-first-word-capitalized (if is-first-word-capitalized sentence-with-new-separator (concat (downcase (substring sentence-with-new-separator 0 1)) (substring sentence-with-new-separator 1)))) ; Capitalize first letter of first word
          )
     sentence-with-first-word-capitalized))
