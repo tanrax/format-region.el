@@ -38,13 +38,12 @@ M-x format-to-pascal-case-region
 M-x format-to-snake-case-region
 ```
 
-## Installation
+## Install
 
-1. Download `format-region.el` file.
-
-2. Add this to your `~/.emacs` file:
+Add in your `init.el`.
 
 ```elisp
-(add-to-list 'load-path "/path/to/format-region.el")
-(require 'format-region)
+(use-package format-region
+  :straight (:host github :repo "tanrax/format-region.el" :files ("format-region.el"))
+  :ensure t)
 ```
